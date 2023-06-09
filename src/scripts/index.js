@@ -1,19 +1,18 @@
-import { closeModal } from "./modal.js";
+import { closeModal, createNewRecord } from "./modal.js";
 import { insertedValues, valuesCategory } from "./valuesData.js";
+import { renderAllValues, renderInputValues, renderOutputValues } from "./render.js";
 
-
-function handleModal() {
+export function handleModal() {
   const button = document.querySelector('.header .btn-register-finance');
   const modalController = document.querySelector('.modal__controller');
 
   button.addEventListener('click', () => {
-    console.log("Clicado")
     modalController.showModal();
     closeModal();
   })
 }
 
-function createRecordCard(recordItem) {
+export function createRecordCard(recordItem) {
   const record = document.createElement('li');
   const value = document.createElement('p');
   const boxIcons = document.createElement('div');
@@ -32,89 +31,28 @@ function createRecordCard(recordItem) {
   trashButton.alt = 'ícone de lixeira'
   trashButton.dataset.trashId = recordItem.id;
 
+  trashButton.addEventListener('click', (event) => {
+    const trashId = event.target.dataset.trashId;
+    console.log('trashId', trashId);
+
+    function manualIndexOf(insertedValues, trashId) {
+      for (let i = 0; i < insertedValues.length; i++) {
+        if (insertedValues[i].id == trashId) {
+          return i;
+        }
+      }
+      return -1;
+    }
+    const index = manualIndexOf(insertedValues, trashId);
+    console.log("index", index);
+    insertedValues.splice(index, 1);
+    console.log("insertedValues", insertedValues);
+    verifySelectedButton(insertedValues)
+  })
+
   boxIcons.append(recordType, trashButton);
   record.append(value, boxIcons);
   return record;
-}
-
-function removeRecord(valuesList) {
-  const allTrashIcons = document.querySelectorAll('.item__trash-icon');
-  // valuesList.forEach((value, index))
-
-  allTrashIcons.forEach((trashIcon) => {
-    trashIcon.addEventListener('click', (event) => {
-      const trashId = event.target.dataset.trashId;
-      console.log(trashId);
-
-      function manualIndexOf(valuesList, trashId) {
-        for (let i = 0; i < valuesList.length; i++) {
-          if (valuesList[i].id == trashId) {
-            return i;
-          }
-        }
-        return -1;
-      }
-      const index = manualIndexOf(valuesList, trashId);
-      console.log(index)
-      // valuesList.splice(index, 1);
-      console.log(valuesList);
-
-      const typeToRemove = verifySelectedButton(insertedValues);
-      // if(typeToRemove === 'all'){
-      //   renderAllValues(valuesList);
-      // }
-    })
-  })
-}
-
-
-export function renderAllValues(valuesList) {
-  const renderValuesContainer = document.querySelector('.render-values__container');
-  const total = document.querySelector('.render-values__sum > p');
-  renderValuesContainer.innerHTML = '';
-
-  valuesList.forEach(elem => {
-    const record = createRecordCard(elem);
-    renderValuesContainer.appendChild(record);
-    
-  });
-  total.innerText = 'R$ ' + renderValuesSum(valuesList).toFixed(2);
-}
-
-export function renderValuesSum(valuesList) {
-  const sumValuesList = valuesList.map(elem => parseFloat(elem.value));
-  const total = sumValuesList.reduce((acumulator, currentValue) => acumulator += currentValue);
-  return total;
-}
-
-export function renderInputValues(valuesList) {
-  const renderValuesContainer = document.querySelector('.render-values__container');
-  const total = document.querySelector('.render-values__sum > p');
-  renderValuesContainer.innerHTML = '';
-  total.innerHTML = '';
-
-  let inputList = valuesList.filter(elem => elem.categoryID === 0);
-  inputList.forEach(elem => {
-    const inputRecord = createRecordCard(elem);
-    renderValuesContainer.appendChild(inputRecord);
-  })
-  renderValuesSum(inputList);
-  total.innerText = 'R$ ' + renderValuesSum(inputList).toFixed(2);
-}
-
-export function renderOutputValues(valuesList) {
-  const renderValuesContainer = document.querySelector('.render-values__container');
-  const total = document.querySelector('.render-values__sum > p');
-  renderValuesContainer.innerHTML = '';
-  total.innerHTML = '';
-
-  let outputList = valuesList.filter(elem => elem.categoryID === 1);
-  outputList.forEach(elem => {
-    const outputRecord = createRecordCard(elem);
-    renderValuesContainer.appendChild(outputRecord);
-  })
-  renderValuesSum(outputList);
-  total.innerText = 'R$ ' + renderValuesSum(outputList).toFixed(2);
 }
 
 function verifySelectedButton(valuesList) {
@@ -124,13 +62,10 @@ function verifySelectedButton(valuesList) {
 
   if (buttonAllValues.classList.contains('selected')) {
     renderAllValues(valuesList);
-    return 'all';
   } else if (buttonInputValues.classList.contains('selected')) {
     renderInputValues(valuesList);
-    return 'input';
   } else if (buttonOutputValues.classList.contains('selected')) {
     renderOutputValues(valuesList);
-    return 'output';
   }
 }
 
@@ -174,6 +109,6 @@ function buttonTriggers(valuesList) {
 handleModal();
 buttonTriggers(insertedValues);
 verifySelectedButton(insertedValues);
-removeRecord(insertedValues);
+createNewRecord(insertedValues);
 
 
