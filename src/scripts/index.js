@@ -28,7 +28,7 @@ function createRecordCard(recordItem) {
 
   value.innerText = 'R$ ' + recordItem.value;
   recordType.innerText = valuesCategory[recordItem.categoryID];
-  trashButton.src = "../../src/assets/trash-icon.svg";
+  trashButton.src = "./src/assets/trash-icon.svg";
   trashButton.alt = 'ícone de lixeira'
   trashButton.dataset.trashId = recordItem.id;
 
