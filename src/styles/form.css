@@ -1,0 +1,82 @@
+.modal__controller {
+  padding: 0;
+  margin: 3.125rem auto 0;
+  border: 1px solid transparent;
+  width: 90%;
+  height: max-content;
+  border-radius: var(--radius-1);
+}
+
+.modal__controller::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  cursor: url('../assets/cursor-control-finance.svg'), auto;}
+
+.modal__container {
+  max-width: 100%;
+  height: 100%;
+  padding: 0.625rem;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position:relative;
+}
+
+.btn-close-modal {
+  position: absolute;
+  right: 8px;
+  top: 2px;
+}
+
+.modal__form-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 12px;
+}
+
+.input-record-value {
+  border-radius: var(--radius-1);
+  border: 2px solid var(--color-grey-3);
+  padding: 0.625rem 1.25rem;
+}
+
+.input-record-value:focus {
+  outline: none;
+  border: 2px solid var(--color-brand-1);
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 100%;
+  margin-top: 1.75rem;
+}
+
+.btn-container {
+  max-width: 100%;
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-insert-value, .btn-cancel {
+  width: 48%;
+}
+
+.item-container label{
+  border: 1px solid var(--color-grey-3);
+  color: var(--color-grey-2);
+  max-width: 100%;
+  text-align: center;
+  padding: 8px ;
+  border-radius: var(--radius-1);
+}
+
+.item-container input[type='radio']:checked + label {
+  background-color: var(--color-brand-1);
+  color: var(--color-grey-5);
+
+}

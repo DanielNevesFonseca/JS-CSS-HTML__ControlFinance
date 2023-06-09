@@ -1,0 +1,40 @@
+.title1, ti.title2, .text1, .text2 {
+  color: var(--color-grey-1);
+}
+
+.title1 {
+  font-size: var(--font-size-1);
+  font-weight: var(--font-weight-1);
+}
+
+.title2 {
+  font-size: var(--font-size-2);
+  font-weight: var(--font-weight-2);
+}
+
+.text1, .text2 {
+  line-height: var(--font-line-height-1);
+}
+
+.text1 {
+  font-size: var(--font-size-3);
+  font-weight: var(--font-weight-3);
+}
+
+.text2 {
+  font-size: var(--font-size-4);
+  font-weight: var(--font-weight-3);
+} 
+
+.text-bold {
+  font-weight: var(--font-weight-1);
+}
+
+.text-medium {
+  font-weight: var(--font-weight-2);
+}
+
+.text-regular {
+  font-weight: var(--font-weight-3);
+}
+

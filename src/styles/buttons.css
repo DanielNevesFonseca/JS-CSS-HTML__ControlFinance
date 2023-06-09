@@ -1,0 +1,53 @@
+button {
+  padding-inline: 0.875rem;
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius-1);
+  font-weight: var(--font-weight-1);
+  cursor: url('../assets/cursor-control-finance-2.svg'), auto;
+}
+
+.btn-primary {
+  background-color: var(--color-brand-1);
+  border: 1px solid var(--color-brand-1);
+  color: var(--fixed-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-brand-2);
+  border-color: var(--color-brand-2);
+}
+
+.btn-greylow {
+  background-color: var(--color-grey-5);
+  color: var(--color-grey-2);
+  border: 1px solid var(--color-grey-5);
+}
+
+.btn-greylow:hover {
+  background-color: var(--color-grey-4);
+  border-color: var(--color-grey-4);
+}
+
+.btn-outline {
+  background-color: var(--fixed-white);
+  color: var(--color-grey-2);
+  border: 1px solid var(--color-grey-3);
+}
+
+.btn-outline:hover, .btn-outline:active, .selected {
+  background-color: var(--color-brand-3);
+  color: var(--color-brand-1);
+  border-color: var(--color-brand-1);
+}
+
+.btn-register-finance {
+  color: var(--color-grey-5);
+  justify-self: center;
+  font-weight: 600;
+}
+
+.btn-register-finance:hover {
+  background-color: var(--color-brand-2);
+  transition: ease-in 0.5s;
+}

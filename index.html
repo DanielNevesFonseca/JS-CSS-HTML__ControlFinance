@@ -1,26 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Control Finance</title>
-    <link
-      rel="shortcut icon"
-      href="./src/assets/favicon.ico"
-      type="image/x-icon"
-    />
-    <meta
-      name="description"
-      content="Control Finance - Seu controle financeiro"
-    />
-    <link rel="stylesheet" href="./src/styles/globalStyles.css" />
-    <link rel="stylesheet" href="./src/styles/index.css" />
-  </head>
-  <body>
-    <main id="app"></main>
-    <script src="./src/scripts/modal.js"></script>
-    <script src="./src/scripts/valuesData.js"></script>
-    <script src="./src/scripts/index.js"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./src/assets/favicon.ico" type="image/x-icon">
+  <meta name="description" content="Control Finance - Seu controle financeiro">
+  <!-- Css -->
+  <link rel="stylesheet" href="./src/styles/reset.css">
+  <link rel="stylesheet" href="./src/styles/globalStyles.css">
+  <link rel="stylesheet" href="./src/styles/index.css">
+  <link rel="stylesheet" href="./src/styles/buttons.css">
+  <link rel="stylesheet" href="./src/styles/texts.css">
+  <link rel="stylesheet" href="./src/styles/form.css">
+  <link rel="stylesheet" href="./src/styles/header.css">
+
+  <title>Control Finance</title>
+</head>
+
+<body>
+
+  <header class="header">
+    <h1 class="header__logo title1"><span class="brand-color">Control</span> Finance</h1>
+    <button class="btn-register-finance btn-primary text1">Registrar Novo Valor </button>
+    
+    <dialog class="modal__controller">
+      <div class="modal__container">
+        <h2 class="title2">Registro de Valor</h2>
+        <button class="btn-close-modal">X</button>
+        <p class="text2">Digite o valor e em seguida aperte no botão referente ao tipo do valor</p>
+        <form class="modal__form-container">
+          <label class="text1" for="value">Valor</label>
+          <input autocomplete="off" class="input-record-value" id="value" type="text" placeholder="R$ 00.00">
+          <div class="item-container">
+            <input checked hidden type="radio" name="categoryID" id="input" value="0">
+            <label class="text1" for="input">Entrada</label>
+            <input hidden type="radio" name="categoryID" id="output" value="1">
+            <label class="text1" for="output">Saída</label>
+            <div class="btn-container">
+              <button class="btn-insert-value btn-primary">Inserir Valor</button>
+              <button class="btn-cancel btn-greylow">Cancelar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </dialog>
+  </header>
+
+  <main class="main">
+    <section class="main__finance-summary">
+      <h2 class="finance-summary__title title2">Resumo Financeiro</h2>
+      <div class="finance-summary__btn-container">
+        <button class="btn-all btn-outline selected">Todos</button>
+        <button class="btn-incomes btn-outline">Entradas</button>
+        <button class="btn-expenses btn-outline">Saídas</button>
+      </div>
+    </section>
+
+    <section class="main__render-values">
+      <div class="render-values__sum">
+        <h2 class="text1">Soma dos Valores</h2>
+        <p class=" text1">R$ 0.00</p>
+      </div>
+      <ul class="render-values__container"></ul>
+    </section>
+  </main>
+  <!-- JavaScript -->
+  <script defer type="module" src="./src/scripts/index.js"></script>
+
+</body>
+
 </html>
