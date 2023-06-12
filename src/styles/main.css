@@ -79,5 +79,16 @@
   .main{
     margin: 0 20%;
   }
+  .main__finance-summary {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .finance-summary__btn-container {
+    justify-content: flex-end;
+  }
+  .finance-summary__title {
+    width: 13.5rem;
+  }
 }
 

@@ -1,5 +1,4 @@
 import { renderAllValues, renderInputValues, renderOutputValues } from "./render.js";
-import { insertedValues } from "./valuesData.js";
 
 export function closeModal() {
   const closeButton = document.querySelector('.btn-close-modal');
@@ -28,20 +27,27 @@ export function createNewRecord(valuesList) {
     const recordTypeId = parseInt(recordType.value)
     const recordInputValue = parseFloat(recordInput.value).toFixed(2);
     
-    if (valuesList.length <= 0) {
-      let newRecord = {
-        id: 1,
-        value: recordInputValue,
-        categoryID: recordTypeId
-      }
-      valuesList.push(newRecord);
+    console.log(typeof(recordInputValue));
+    
+    if (recordInputValue == 'NaN'){
+      alert('Digite um valor do tipo numérico!');
+      modalController.close();
     } else {
-      let newRecord = {
-        id: valuesList[valuesList.length - 1].id + 1,
-        value: recordInputValue,
-        categoryID: recordTypeId
+      if (valuesList.length <= 0) {
+        let newRecord = {
+          id: 1,
+          value: recordInputValue,
+          categoryID: recordTypeId
+        }
+        valuesList.push(newRecord);
+      } else {
+        let newRecord = {
+          id: valuesList[valuesList.length - 1].id + 1,
+          value: recordInputValue,
+          categoryID: recordTypeId
+        }
+        valuesList.push(newRecord);
       }
-      valuesList.push(newRecord);
     }
     const buttonAllValues = document.querySelector('.btn-all');
     const buttonInputValues = document.querySelector('.btn-incomes');
