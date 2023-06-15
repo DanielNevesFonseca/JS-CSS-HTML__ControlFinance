@@ -4,14 +4,19 @@ export function closeModal() {
   const closeButton = document.querySelector('.btn-close-modal');
   const cancelButton = document.querySelector('.btn-cancel');
   const modalController = document.querySelector('.modal__controller');
+  const input = document.querySelector('.input-record-value');
   
   closeButton.addEventListener('click', () => {
     modalController.close();
+    input.value = ''
+
   })
 
   cancelButton.addEventListener('click', (event) => {
     event.preventDefault();
     modalController.close();
+    input.value = ''
+
   })
 }
 
@@ -26,8 +31,6 @@ export function createNewRecord(valuesList) {
     const recordType = document.querySelector('input[type="radio"]:checked');
     const recordTypeId = parseInt(recordType.value)
     const recordInputValue = parseFloat(recordInput.value).toFixed(2);
-    
-    console.log(typeof(recordInputValue));
     
     if (recordInputValue == 'NaN'){
       alert('Digite um valor do tipo numérico!');

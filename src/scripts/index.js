@@ -5,10 +5,14 @@ import { renderAllValues, renderInputValues, renderOutputValues } from "./render
 export function handleModal() {
   const button = document.querySelector('.header .btn-register-finance');
   const modalController = document.querySelector('.modal__controller');
+  const input = document.querySelector('.input-record-value');
 
+  
   button.addEventListener('click', () => {
     modalController.showModal();
     closeModal();
+    input.value = ''
+
   })
 }
 
